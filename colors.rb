@@ -18,14 +18,14 @@ class Colors
     color + str + "\u001b[0m"
   end
 
-  COLOR1 = "\u001b[38;5;32m"
-  COLOR2 = "\u001b[38;5;35m"
-  COLOR3 = "\u001b[38;5;40m"
-  COLOR4 = "\u001b[38;5;45m"
-  COLOR5 = "\u001b[38;5;50m"
-  COLOR6 = "\u001b[38;5;55m"
-  COLOR7 = "\u001b[38;5;55m"
-  COLOR8 = "\u001b[38;5;55m"
+  RED = "\u001b[38;5;9m"
+  GREEN = "\u001b[38;5;10m"
+  BLUE = "\u001b[38;5;12m"
+  MAGENTA = "\u001b[38;5;5m"
+  BROWN = "\u001b[38;5;3m"
+  PINK = "\u001b[38;5;13m"
+  CYAN = "\u001b[38;5;14m"
+  YELLOW = "\u001b[38;5;11m"
 
-  COLORS = [COLOR1, COLOR2, COLOR3, COLOR4, COLOR5, COLOR6, COLOR7, COLOR8]
+  COLORS = [RED, GREEN, BLUE, MAGENTA, BROWN, PINK, CYAN, YELLOW]
 end
