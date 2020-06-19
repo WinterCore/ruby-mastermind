@@ -4,7 +4,7 @@ require_relative "./colors.rb"
 
 
 GUESS_COUNT = 10
-PEG_SYMBOL = '⬤'
+PEG_SYMBOL = 'O' #'⬤'
 
 
 puts "Want to play as a (1) codebreaker or a (2) codemaker"
@@ -16,7 +16,7 @@ size_of_board = gets.chomp.to_i
 def render_board(guesses, key_pegs, size_of_board)
   for i in (0..(GUESS_COUNT - 1))
     for j in guesses[i]
-      print Colors.render(PEG_SYMBOL, Colors::COLORS[j - 1])
+      print Colors.render(j, Colors::COLORS[j - 1])
       print " " * 5
     end
     print "\n"
