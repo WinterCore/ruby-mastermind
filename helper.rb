@@ -1,23 +1,21 @@
-  
-def keypeg_comp(turn_code, guesses)
-  keypeg = []
-  red_pegs = 0
-  white_pegs = 0
-
-  turn_code.each_with_index do |value, index|
-    if value.to_i == guesses[index].to_i
-      red_pegs += 1
-      turn_code[index] = nil
-      guesses[index] = nil
-    elsif guesses.include? value
-      white_pegs +=1
+class Helper
+  def keypeg_comparator(turn_code, guesses)
+    red_pegs = 0
+    white_pegs = 0
+    turn_code.each_with_index do |value, index| # yesterday I was doing |index, value| ... burned head xD
+      if value == guesses[index]
+        red_pegs += 1
+        turn_code[index], guesses[index] = nil # red peg is now nil doesn't count them again while white_peg iterates
+      end
     end
+    guesses.each { |value| white_pegs += 1 if !value.nil? && turn_code.include?(value) } # check any value, not nil
+    [red_pegs, white_pegs]
   end
-  puts red_pegs
-  puts white_pegs
 end
 
 p turn_code = [1, 2, 3, 4, 5, 6, 7, 8]
-p guesses = [1, 2, 4, 1, 3, 6, 7, 9]
+p guesses = [6, 2, 3, 4, 5, 6, 7, 8]
 
-keypeg_comp(turn_code, guesses)
+hola = Helper.new
+
+p hola.keypeg_comparator(turn_code, guesses)
