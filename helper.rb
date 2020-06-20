@@ -4,19 +4,20 @@ def keypeg_comp(turn_code, guesses)
   red_pegs = 0
   white_pegs = 0
 
-  turn_code.each_with_index do |index, value| 
-    if turn_code[index] == guesses[index]
+  turn_code.each_with_index do |value, index|
+    if value.to_i == guesses[index].to_i
       red_pegs += 1
-    elsif guesses.include? turn_code[index]
+      turn_code[index] = nil
+      guesses[index] = nil
+    elsif guesses.include? value
       white_pegs +=1
     end
   end
-  print red_pegs
-  print white_pegs
+  puts red_pegs
+  puts white_pegs
 end
 
-
-turn_code = [1, 2, 3, 4]
-guesses = [4, 5, 2, 5]
+p turn_code = [1, 2, 3, 4, 5, 6, 7, 8]
+p guesses = [1, 2, 4, 1, 3, 6, 7, 9]
 
 keypeg_comp(turn_code, guesses)
