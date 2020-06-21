@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
-
+require_relative "./helper.rb"
 require_relative "./colors.rb"
-
 
 GUESS_COUNT = 10
 PEG_SYMBOL = 'O' #'⬤'
@@ -16,7 +15,7 @@ size_of_board = gets.chomp.to_i
 def render_board(guesses, key_pegs, size_of_board)
   for i in (0..(GUESS_COUNT - 1))
     for j in guesses[i]
-      print Colors.render(j, Colors::COLORS[j - 1])
+      print Colors.render(j.to_s, Colors::COLORS[j - 1])
       print " " * 5
     end
     print "\n"
@@ -57,7 +56,17 @@ loop do # round loop
     for j in (1..size_of_board)
       key_pegs[i] << gets.chomp.to_i # 1 represent red keypeg and 2 represents white keypeg
     end
+    key_pegs_array = key_pegs[i].inject([0, 0]) do |value, n|
+      if n == 1
+        value[0] += 1
+      elsif n == 2
+        value[1] += 1
+      end
+      value
+    end
 
+    compare_pegs = Helper.new
+    compare_pegs.keypeg_comparator(turn_code, guesses[i])
     # if there's a color in the right position mark it as red. If the color is correct but is in the wrong position add white codepeg.
 
     # compare both codepegs and input of the codemaker
